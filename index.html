@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page de connexion</title>
+</head>
+<body>
+
+    <h2>Connexion</h2>
+
+    <form onsubmit="return verifierConnexion()">
+
+        
+        <input type="text" id="email" placeholder="email"><br>
+        <span id="erreurEmail" style="color:red;"></span><br><br>
+
+         <input type="telephone" id="telephone" placeholder="telephone"><br><br>
+        
+        <input type="password" id="password" placeholder="passeword"><br><br>
+        
+
+        <button type="submit">Se connecter</button>
+
+    </form>
+
+    <script>
+        function verifierConnexion() {
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let telephone = document.getElementById("telephone").value;
+            let regtelephone=/^(77)\d{7}$/;
+            if(telephone.length<9){
+                    alert('le nusero doit avoir 9 chifffres')
+                    return;
+                } 
+
+                if(!regtelephone.test(telephone)){
+                    alert('le numero doit commencer par 77')
+                    return;
+                };
+                
+             if(password.length<8){
+                alert('azerty')
+                return;
+             }
+
+
+            // Réinitialisation des erreurs
+            document.getElementById("erreurEmail").innerText = "";
+            document.getElementById("erreurPassword").innerText = "";
+
+            let valide = true;
+
+            // Vérification email
+            if (!regexEmail.test(email)) {
+                document.getElementById("erreurEmail").innerText =
+                    "Email invalide (ex: exemple@email.com)";
+                valide = false;
+            }
+
+            // Vérification mot de passe
+            if (!regexPassword.test(password)) {
+                document.getElementById("erreurPassword").innerText =
+                    "Mot de passe : au moins 8 caractères";
+                valide = false;
+            }
+
+            return valide; // bloque l'envoi si faux
+        }
+    </script>
+
+</body>
+</html>
